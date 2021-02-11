@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener
     Font tiiitleFont;
     Font EndFont;
     Timer frameDraw;
+    Rocketship rocketship;
     GamePanel(){
     	 titleFont = new Font("Arial", Font.PLAIN, 48);
     	 tiitleFont = new Font("Arial", Font.PLAIN, 15);
@@ -27,6 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener
     	 EndFont = new Font("Arial", Font.PLAIN, 48);
     	 frameDraw = new Timer(1000/60,this);
     	    frameDraw.start();
+    	    rocketship = new Rocketship();
     }
 	@Override
 	public void paintComponent(Graphics g){
@@ -64,7 +66,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener
 		 g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		 g.setFont(EndFont);
 	 g.setColor(Color.GREEN);
-	 g.drawString("GAME OVER", 75, 55);	 }
+	 g.drawString("GAME OVER", 75, 55);
+	 g.setFont(tiiitleFont);
+	 g.drawString("You Killed  Enemies", 175, 250);
+	 g.setFont(tiiitleFont);
+	 g.drawString("Press ENTER to restart", 175, 300);
+	 }
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
