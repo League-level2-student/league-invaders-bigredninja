@@ -11,8 +11,8 @@ GameObject(int x,int y,int width,int height){
 	this.y = y;
 	this.width = width;
 	this.height = height;
-	int speed = 0;	
-	boolean isActive = true;
+	 speed = 0;	
+	 isActive = true;
 }
 void update() {
 	
