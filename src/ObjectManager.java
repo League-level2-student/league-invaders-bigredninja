@@ -46,7 +46,22 @@ for (Iterator iterator = projectiles.iterator(); iterator.hasNext();) {
 		}
 		for (Iterator iterator = projectiles.iterator(); iterator.hasNext();) {
 			Projectile projectile = (Projectile) iterator.next();
-			projectile.draw(g);
+		projectile.draw(g);
 	}
 }
-}
+	void purgeObjects() {
+		for (Iterator iterator = aliens.iterator(); iterator.hasNext();) {
+			Alien alien = (Alien) iterator.next();
+			if (alien.isActive == false) {
+				iterator.remove();
+			}
+		}
+		for (Iterator iterator = projectiles.iterator(); iterator.hasNext();) {
+			Projectile projectile = (Projectile) iterator.next();
+		if (projectile.isActive == false) {
+			iterator.remove();
+		}
+	}			
+		}
+	}
+
