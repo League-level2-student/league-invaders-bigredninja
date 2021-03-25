@@ -8,7 +8,7 @@ import java.util.Random;
 public class ObjectManager implements ActionListener{
 	Random rnd = new Random();
 	ArrayList<Alien> aliens;
-
+	int score = 0;
 	ArrayList<Projectile> projectiles;
 	Rocketship spaceship;
 	public ObjectManager( Rocketship spaceship) {
@@ -30,6 +30,7 @@ public class ObjectManager implements ActionListener{
 				alien.isActive = false;
 			}
 
+
 		}
 		for (Iterator iterator = projectiles.iterator(); iterator.hasNext();) {
 			Projectile projectile = (Projectile) iterator.next();
@@ -38,6 +39,8 @@ public class ObjectManager implements ActionListener{
 				projectile.isActive = false;
 			}
 		}
+		checkCollision();
+		purgeObjects();
 	}
 	void draw(Graphics g) {
 		spaceship.draw(g);
@@ -69,6 +72,26 @@ public class ObjectManager implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		addAlien();
+	}
+	void checkCollision() {
+		for (Iterator iterator = aliens.iterator(); iterator.hasNext();) {
+			Alien alien = (Alien) iterator.next();
+			if (spaceship.collisionBox.intersects(alien.collisionBox)) {
+				spaceship.isActive = false;
+				break;
+			}
+			for (Iterator iterator1 = projectiles.iterator(); iterator1.hasNext();) {
+				Projectile projectile = (Projectile) iterator1.next();
+				if (projectile.collisionBox.intersects(alien.collisionBox)) {
+					alien.isActive = false;
+					projectile.isActive = false;
+					score++;
+				}
+			}
+		}
+	}
+	int getScore() {
+		return score;
 	}
 }
 

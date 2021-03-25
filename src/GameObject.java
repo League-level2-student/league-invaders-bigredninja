@@ -17,6 +17,8 @@ public class GameObject {
 		collisionBox = new Rectangle(x,y,width,height);
 	}
 	void update() {
-		 collisionBox.setBounds(x, y, width, height);
+		 collisionBox.setBounds(x, y, width, height); 
+
+
 	}
 }
